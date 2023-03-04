@@ -1,15 +1,30 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+
 import "./App.css";
 import Navbar from "./Navbar";
+import About from "./pages/About";
+import Home from "./pages/Home";
+import Pricing from "./pages/Pricing";
 
 function App() {
-  const [count, setCount] = useState(0);
+  let Component;
+
+  switch (window.location.pathname) {
+    case "/about":
+      Component = <About />;
+      break;
+    case "/pricing":
+      Component = <Pricing />;
+      break;
+    default:
+      Component = <Home />;
+  }
 
   return (
-    <div className="App">
+    <>
       <Navbar />
-    </div>
+      <div className="container">{Component}</div>
+    </>
   );
 }
 
